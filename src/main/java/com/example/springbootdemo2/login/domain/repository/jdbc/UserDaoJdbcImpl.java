@@ -8,7 +8,9 @@ import com.example.springbootdemo2.login.domain.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDaoJdbcImpl implements UserDao{
   
   @Autowired
@@ -53,7 +55,7 @@ public class UserDaoJdbcImpl implements UserDao{
   //SQL取得結果をサーバーにCSVで保存する
   @Override
   public void userCsvOut() throws DataAccessException {
-    
+
   }
 
 }
