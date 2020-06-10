@@ -1,5 +1,7 @@
 package com.example.springbootdemo2.login.domain.repository;
 
+import java.util.List;
+
 import com.example.springbootdemo2.login.domain.model.User;
 
 import org.springframework.dao.DataAccessException;
@@ -7,7 +9,6 @@ import org.springframework.dao.DataAccessException;
 public interface UserDao {
   
   public int count() throws DataAccessException;
-
 
   // Userテーブルにデータを一件挿入
   public int insertOne(User user) throws DataAccessException;
@@ -17,7 +18,7 @@ public interface UserDao {
 
 
     //Userテーブルのデータを全件取得
-    public int selectMany() throws DataAccessException;
+    public List<User> selectMany() throws DataAccessException;
 
   //Userテーブルのデータを一件更新
   public int updateOne(User user) throws DataAccessException;
