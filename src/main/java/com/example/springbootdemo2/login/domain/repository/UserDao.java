@@ -14,7 +14,7 @@ public interface UserDao {
   public int insertOne(User user) throws DataAccessException;
 
   //Userテーブルのデータを一件取得
-  public int selectOne(String userId) throws DataAccessException;
+  public User selectOne(String userId) throws DataAccessException;
 
 
     //Userテーブルのデータを全件取得
