@@ -1,5 +1,8 @@
 package com.example.springbootdemo2.login.controller;
 
+import java.util.List;
+
+import com.example.springbootdemo2.login.domain.model.User;
 import com.example.springbootdemo2.login.domain.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +25,31 @@ public class HomeController {
     return "login/homeLayout.html";
   }
 
+  @GetMapping("/userList")
+  public String getUserList(Model model) {
+
+    model.addAttribute("contents", "login/userList :: userList_contents");
+
+    List<User> userList = userService.selectMany();
+
+    model.addAttribute("userList", userList);
+
+    int count = userService.count();
+    model.addAttribute("userListCount", count);
+
+    return "login/homeLayout";
+  }
+
   @PostMapping("/logout")
   public String postLogout() {
 
     return "redirect:/login";
+  }
+
+  //未実装
+  @GetMapping("/userList/csv")
+  public String getUserListCsv(Model model) {
+
+    return getUserList(model);
   }
 }

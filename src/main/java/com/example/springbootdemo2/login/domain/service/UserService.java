@@ -1,5 +1,7 @@
 package com.example.springbootdemo2.login.domain.service;
 
+import java.util.List;
+
 import com.example.springbootdemo2.login.domain.model.User;
 import com.example.springbootdemo2.login.domain.repository.UserDao;
 
@@ -12,6 +14,10 @@ public class UserService {
   @Autowired
   UserDao userDao;
 
+  public int count() {
+    return userDao.count();
+  }
+
   public boolean insert(User user) {
 
     int rowNumber = userDao.insertOne(user);
@@ -23,5 +29,10 @@ public class UserService {
     }
 
     return result;
+  }
+
+  public List<User> selectMany() {
+
+    return userDao.selectMany();
   }
 }
