@@ -10,6 +10,7 @@ import com.example.springbootdemo2.login.domain.model.User;
 import com.example.springbootdemo2.login.domain.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -103,13 +104,19 @@ public class HomeController {
     user.setAge(signupForm.getAge());
     user.setMarriage(signupForm.isMarriage());
 
-    boolean result = userService.updateOne(user);
+    try {
 
-    if(result == true) {
+      boolean result = userService.updateOne(user);
 
-      model.addAttribute("result", "更新成功");
-    } else {
-      model.addAttribute("result", "更新失敗");
+      if(result == true) {
+
+        model.addAttribute("result", "更新成功");
+      } else {
+        model.addAttribute("result", "更新失敗");
+      }
+    } catch(DataAccessException e) {
+
+      model.addAttribute("result", "更新失敗(トランザクション)");
     }
 
     return getUserList(model);

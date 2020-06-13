@@ -88,9 +88,13 @@ public class UserDaoJdbcImpl implements UserDao{
   @Override
   public int updateOne(User user) throws DataAccessException {
 
-    int rawNumber = jdbcTemplate.update("UPDATE m_user SET password = ?, user_name = ?, birthday = ?, age = ?, marriage = ? WHERE user_id = ?",
+    int rowNumber = jdbcTemplate.update("UPDATE m_user SET password = ?, user_name = ?, birthday = ?, age = ?, marriage = ? WHERE user_id = ?",
                                                                 user.getPassword(), user.getUserName(), user.getBirthday(), user.getAge(), user.isMarriage(), user.getUserId());
-    return rawNumber;
+
+    // if(rowNumber > 0) {
+    //   throw new DataAccessException("トランザクションテスト") {};
+    // }
+    return rowNumber;
   }
 
   //Userテーブルのデータを一件削除
