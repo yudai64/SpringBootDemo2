@@ -31,6 +31,11 @@ public class UserService {
     return result;
   }
 
+  public User selectOne(String userId) {
+
+    return userDao.selectOne(userId);
+  }
+
   public List<User> selectMany() {
 
     return userDao.selectMany();
