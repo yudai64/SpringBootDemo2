@@ -22,7 +22,7 @@
         <tr>
           <th class="active col-sm-3">ユーザーID</th>
           <td>
-            <div class="form-group" th:classappend="${#fields.hasErrors('userId')}">
+            <div class="form-group">
               <input type="text" class="form-control" th:field="*{userId}" />
               <div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="text-danger"></div>
             </div>
