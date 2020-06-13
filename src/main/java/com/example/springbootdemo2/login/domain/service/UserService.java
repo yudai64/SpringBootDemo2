@@ -40,4 +40,19 @@ public class UserService {
 
     return userDao.selectMany();
   }
+
+  public boolean updateOne(User user) {
+
+    int rowNumber = userDao.updateOne(user);
+
+    boolean result = false;
+
+    if(rowNumber > 0) {
+      result= true;
+    }
+
+    return result;
+
+
+  }
 }
