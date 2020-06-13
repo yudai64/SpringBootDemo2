@@ -112,6 +112,22 @@ public class HomeController {
 
   }
 
+  @PostMapping(value="/userDetail", params="delete")
+  public String postUserDetailDelete(@ModelAttribute SignupForm signupForm, Model model) {
+
+    System.out.println("削除ボタンの処理");
+
+    boolean result = userService.deleteOne(signupForm.getUserId());
+
+    if(result == true) {
+      model.addAttribute("result", "削除成功");
+    } else {
+      model.addAttribute("result", "削除失敗");
+    }
+
+    return getUserList(model);
+  }
+
   @PostMapping("/logout")
   public String postLogout() {
 
