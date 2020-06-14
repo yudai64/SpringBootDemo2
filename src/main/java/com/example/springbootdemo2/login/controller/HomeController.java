@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class HomeController {
@@ -167,4 +169,13 @@ public class HomeController {
 
     return new ResponseEntity<>(bytes, header, HttpStatus.OK);
   }
+
+  @GetMapping("/admin")
+  public String getAdmin(Model model) {
+
+    model.addAttribute("contents", "login/admin :: admin_contents");
+
+    return "login/homeLayout";
+  }
+  
 }
