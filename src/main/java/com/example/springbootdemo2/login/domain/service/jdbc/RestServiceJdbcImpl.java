@@ -26,12 +26,12 @@ public class RestServiceJdbcImpl implements RestService{
 
   @Override
   public User selectOne(String userId) {
-    return null;
+    return userDao.selectOne(userId);
   };
 
   @Override
   public List<User> selectMany() {
-    return null;
+    return userDao.selectMany();
   };
 
   @Override
